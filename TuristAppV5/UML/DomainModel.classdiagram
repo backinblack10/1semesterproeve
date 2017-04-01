@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="7e5fd967-08fe-4eb7-8f46-224bbb0c8ed8" name="DomainModel" linkedPackageId="9725e454-5a9a-483c-8f0a-b308ac43aa86" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3d50ff8f-847b-4119-be6c-83ad5df40809" name="Kategori" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="170be82f-7c62-475a-b7ef-fc4b2855d07c" />
+        <ownedAttributesInternal>
+          <property Id="e8a20694-1f3f-448d-8069-b4d7b642e190" name="Kategorinavn" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c3c3218e-3b78-4f24-938e-e74ec9dd28f3" />
+          </property>
+          <property Id="22e5395a-5f72-4bf7-8dcb-db62f859c8ed" name="Billede" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="92a71526-6721-477d-8aa2-a3087e4b2a44" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="d7bf1ff3-6374-4cc8-a657-6ad38119ce3a" name="Kategorilister" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="78b697e7-da43-426b-9a9d-4a01da49af3f" />
+        <targetEnds>
+          <association Id="6ddd5571-6d30-4ff3-b092-4f359b82b83d" isDerived="false" sourceEndRoleName="Kategorilister" targetEndRoleName="Kategori" isLeaf="false" name="Knytter liste til kategori" isAbstract="false">
+            <classMoniker Id="3d50ff8f-847b-4119-be6c-83ad5df40809" LastKnownName="Kategori" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4670bba1-c1cf-4651-b7fa-56e25ea828b3" name="Kategorilister" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="80217c44-bbcf-44f0-a1e4-337295770836" name="Lower" value="*">
+                      <elementDefinition Id="52c392df-ad92-46a3-bcc1-636895c84243" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="2ac9c748-7e6e-4d61-bf44-a68149cd25b8" name="Upper" value="*">
+                      <elementDefinition Id="9da55ba5-bcd4-4f0b-aee5-254de07ef520" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="8d786ee3-c180-481c-995f-33464e6a18e5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b6bc922a-91b8-43a0-a981-8eb5617a03e0" name="Kategori" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ccef9d73-1959-4eeb-98cc-cec0c977cde7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="00c0fe11-e635-40af-8cbd-0f1eceef166f" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="0c6c8eca-8b85-44e8-b587-36ded15e0c59" name="Navn" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="cf6611ef-aa9a-4d36-86e2-6b281b9adfa4" />
+          </property>
+          <property Id="f7a53f58-9ec2-4750-a9dd-5e34fcd3a79b" name="Beskrivelse" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="85477fc8-3829-475a-ba4f-49e8431846cc" />
+          </property>
+          <property Id="6b11d5eb-d92d-4e26-a5de-0f99c3f2050a" name="Hjemmeside" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="69180a4c-2ba6-47be-9ef3-8a058335a4bf" />
+          </property>
+          <property Id="02fb1f49-4e34-4298-ab48-697b44acfb4d" name="Telefon" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a3fe2d60-b41e-4691-8e3e-f9ba6d8c22c2" />
+          </property>
+          <property Id="d9fd5a00-4e56-4a37-896a-a96b25e8921a" name="Længdegrad" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="43d78d55-21b4-4a97-88e0-9a85e3aac7cc" />
+          </property>
+          <property Id="6ded3bde-dd30-4447-b720-fae4fda90216" name="Breddegrad" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="40068405-522f-4436-9459-5044490c0ccb" />
+          </property>
+          <property Id="41565df1-684e-4b57-89eb-c7bfc0bb48a9" name="Billede" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="37ac8483-9acb-49d2-a99f-5e9fe37707a0" />
+          </property>
+          <property Id="bb18d6bb-b744-486e-911f-0b1cb48298b0" name="Åbningstider" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="ac4e29a9-d01b-4e9a-9d77-854fc2ac174d" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="e1ded2bd-401d-4eed-ab61-6b4eff1bb0f9" name="Kommentar" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="4cc8c523-44a1-4d65-a815-90f1922dc48b" />
+        <targetEnds>
+          <association Id="1529bbce-370c-41a9-bf4e-a20d991d1d12" isDerived="false" sourceEndRoleName="Kommentar" targetEndRoleName="Kategorilister" isLeaf="false" name="Knytter kommentar til liste" isAbstract="false">
+            <classMoniker Id="d7bf1ff3-6374-4cc8-a657-6ad38119ce3a" LastKnownName="Kategorilister" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f2d52b4e-dfa4-4705-9004-0c56844c7b08" name="Kommentar" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="6039cd19-6d88-468e-9deb-ad1970ef361c" name="Lower" value="*">
+                      <elementDefinition Id="77e5b890-3856-4d16-a602-84f7cab731c6" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="999d9d86-b038-479e-b33f-ad449de9b978" name="Upper" value="*">
+                      <elementDefinition Id="c7f25666-deb6-4172-ad51-b305d41795cd" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="7096b9b5-b367-4edf-abfd-8f29502e2a87" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bc5014e6-6952-4887-bc68-dc2f9eec7019" name="Kategorilister" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="860005f6-887e-494d-acbf-87ea52d3622b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="abc72e53-b653-4e7f-9c1a-8e5ec5ec6345" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="849e49f0-c409-40e6-aa86-f3c47665f572" name="Navn" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c3960ad9-6b06-4e41-b771-ddea20a630db" />
+          </property>
+          <property Id="60237d5d-2f83-4983-8589-4f0d075751e4" name="Tekst" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="5085d80f-8235-4632-b4e2-e0eb49e5e384" />
+          </property>
+          <property Id="f7f7ce83-c46b-4acd-8650-6934a30ec2a6" name="Dato" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="442bde2d-7bfb-4612-bbc0-ab1d46e84501" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3959f382-6c35-411f-a764-add2ec1981d1" name="FacebookData" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="87412d11-6e76-4ca3-8e4e-51a5f0d1d718" />
+        <ownedAttributesInternal>
+          <property Id="0772f0a6-9634-4a30-a8aa-149768e79e49" name="Besked" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="1e64da81-32c3-4a15-a59a-0f103edba048" />
+          </property>
+          <property Id="43310f8b-53c9-478d-b96e-a488e05b19c7" name="Billede" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="cd2793e9-33b1-4b2c-9013-f4791f7270b6" />
+          </property>
+          <property Id="8634b60b-cd84-4b71-bfa3-2ee68ad6555c" name="Dato" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="2b61b0b3-0c1c-4c66-bbfb-f27fdefc4e83" />
+          </property>
+          <property Id="4fe3be7e-2fa3-4199-8a39-8bd95c6376f5" name="Kilde" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="0d6c8e95-fbc1-4de8-bda3-e6cc8bf90906" />
+          </property>
+          <property Id="136784f2-ca62-43fd-b50a-e98008e58644" name="Likes" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="0e672bc5-da97-4004-9ba4-d8b64e8f7c96" />
+          </property>
+          <property Id="aab4a3f3-6e05-4226-bee6-e52608cc0553" name="Navn" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3c42fa07-b86e-4107-b629-773afc54ef88" />
+          </property>
+          <property Id="d7231682-9b89-4dce-8b43-6e23fa8de65b" name="Om" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="494881bf-be1d-4621-8608-b9008316f08c" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="9725e454-5a9a-483c-8f0a-b308ac43aa86" name="UML">
+    <elementDefinition Id="1539725e-b34f-495c-9541-1330806be40c" />
+  </package>
+</logicalClassDesignerModel>

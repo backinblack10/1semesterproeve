@@ -1,0 +1,118 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TuristAppV5"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Bing.Maps"
+    xmlns:Viewmodel="using:TuristAppV5.Viewmodel"
+    x:Class="TuristAppV5.MainPage"
+    mc:Ignorable="d">
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="View" Label="Vælg" Click="AppBarButton_Click"/>
+                <AppBarButton Icon="Clear" Label="Clear to-do liste" Command="{Binding SletToDoListeCommand}"/>
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Page.DataContext>
+        <Viewmodel:MainViewmodel/>
+    </Page.DataContext>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/bg.jpg"/>
+        </Grid.Background>
+        <Grid HorizontalAlignment="Left" Margin="20,20,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="190"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock HorizontalAlignment="Left" Margin="10,16,0,0" FontSize="60" TextWrapping="Wrap" Text="#VisitRoskilde" VerticalAlignment="Top" Foreground="White" Height="70"/>
+            <GridView Foreground="White" ItemsSource="{Binding KategoriCollection}" SelectedItem="{Binding SelectedKategori, Mode=TwoWay}" Grid.Row="1">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" Margin="15,0">
+                            <Image Height="150" Width="150" Source="{Binding Billede}"/>
+                            <TextBlock Text="{Binding Kategorinavn}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+            <GridView x:Name="kategoriListeGridView2" ItemsSource="{Binding SelectedKategori.Kategoriliste}" Grid.Row="2" Margin="0,0,0,0" HorizontalAlignment="Left">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Height="180" Width="180" Source="{Binding Billede}" Stretch="Fill" />
+                            <Border Margin="-180 130 0 0" Height="50" Background="#ed6b06" Opacity="0.8">
+                                <TextBlock FontSize="17" HorizontalAlignment="Center" Margin="0 10 0 0" Text="{Binding Navn}"/>
+                            </Border>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+            <Image Source="../Assets/thumbs_up-100.png" HorizontalAlignment="Left" VerticalAlignment="Top" Height="65" Margin="635,9,0,0"/>
+            <TextBlock FontSize="40" TextWrapping="Wrap" Margin="733,37,13,26">
+            	<Run Text="{Binding InfoData[0].Likes}"/>
+                <Run Text=" Likes"/>
+            </TextBlock>
+        </Grid>
+        <Grid Margin="1010,120,10,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="177*"/>
+                <ColumnDefinition Width="176*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="114*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.ColumnSpan="2" Background="#ed6b06">
+                <TextBlock FontSize="40" TextWrapping="Wrap" Text="Facebook Info" Margin="10,3,10,0" HorizontalAlignment="Center"/>
+            </Border>
+            <TextBlock Grid.Row="1" TextWrapping="Wrap" FontSize="30" Text="{Binding InfoData[0].Navn}" Grid.ColumnSpan="2" Margin="0,10,0,0"/>
+            <TextBlock Grid.Row="2" TextWrapping="Wrap" FontSize="16" Text="{Binding InfoData[0].Om}" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Image Stretch="UniformToFill" Grid.Row="3" Grid.ColumnSpan="2" Margin="0,0,0,10" Source="{Binding InfoData[0].Kilde}"/>
+            <!--<TextBlock Grid.Row="4" TextWrapping="Wrap" FontSize="15" Grid.ColumnSpan="2">
+                <Run Text="Telefon: "/>
+                <Run Text="{Binding InfoData[0].Telefon}"/>
+            </TextBlock>
+            <TextBlock Grid.Row="4" TextWrapping="Wrap" FontSize="15" Grid.Column="1">
+                <Run Text="Hjemmeside: "/>
+                <Run  Text="{Binding InfoData[0].Hjemmeside}"/>
+            </TextBlock>-->
+
+            <Border Grid.ColumnSpan="2" Grid.Row="5" Background="#ed6b06">
+                <TextBlock FontSize="40" TextWrapping="Wrap" Text="Facebook Feed" Margin="10,3,10,0" HorizontalAlignment="Center"/>
+            </Border>
+            <ListView Margin="0,10,0,0" Grid.Row="6" Grid.ColumnSpan="2" ItemsSource="{Binding FeedData}" Grid.RowSpan="2">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="3"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock FontSize="30" Text="Visitroskilde" Grid.RowSpan="2" Grid.ColumnSpan="2" />
+                            <Image Source="{Binding Billede}" VerticalAlignment="Top" Margin="0 0 15 0" Grid.Row="1" />
+                            <TextBlock TextWrapping="Wrap" Text="{Binding Besked}" Grid.Column="1" Grid.Row="1" Margin="0,0,0,30" />
+                            <TextBlock Text="{Binding Dato}" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="1" FontStyle="Italic"/>
+                            <Border Background="#ed6b06" Grid.Row="2" Grid.ColumnSpan="2" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>

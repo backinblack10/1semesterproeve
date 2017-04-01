@@ -1,0 +1,134 @@
+﻿<Page
+    x:Name="pageRoot"
+    x:Class="TuristAppV5.View.SelectedKategoriliste"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TuristAppV5.View"
+    xmlns:common="using:TuristAppV5.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="using:TuristAppV5.Viewmodel"
+    xmlns:maps="using:Bing.Maps"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
+        <x:String x:Key="AppName">My Application</x:String>
+    </Page.Resources>
+
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Add" Label="Tilføj kommentar" Click="AppBarButton_Click"/>
+            <AppBarButton Icon="Add" Label="Tilføj til to-do liste" Command="{Binding TilfoejToDoListeCommand}"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Page.DataContext>
+        <viewmodel:MainViewmodel/>
+    </Page.DataContext>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/bg.jpg"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="255*"/>
+            <ColumnDefinition Width="428*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Back button and page title -->
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+				Style="{StaticResource NavigationBackButtonNormalStyle}"
+				VerticalAlignment="Top"
+				AutomationProperties.Name="Back"
+				AutomationProperties.AutomationId="BackButton"
+				AutomationProperties.ItemType="Navigation Button"/>
+            <TextBlock x:Name="pageTitle" Text="{Binding SelectedKategoriliste.Navn}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+				IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+        </Grid>
+        <Grid Margin="10,10,0,-10" Grid.Row="1">
+            <Grid.Background>
+                <ImageBrush Stretch="Fill"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="10,0,0,10" TextWrapping="Wrap" FontSize="16">
+				<Run Text="{Binding SelectedKategoriliste.Beskrivelse}"/>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
+				<Run Text="Telefon: "/>
+				<Run Text="{Binding SelectedKategoriliste.Telefon}"/>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20">
+				<Run Text="Åbningstider: "/>
+				<Run Text="{Binding SelectedKategoriliste.Aabningstider}"/>
+            </TextBlock>
+            <HyperlinkButton BorderBrush="#ed6b06" Foreground="White" FontSize="20" NavigateUri="{Binding SelectedKategoriliste.Hjemmeside}" Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="Gå til website"/>
+        </Grid>
+        <Grid Margin="10,0,0,20" Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="287*"/>
+                <ColumnDefinition Width="338*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="326"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock FontSize="35" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Seneste kommentarer" VerticalAlignment="Top"/>
+            <ListView Margin="10,41,15,10" ItemsSource="{Binding SelectedKategoriliste.KommentarList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Foreground="#ed6b06" FontSize="20" Text="{Binding Navn}" />
+                            <TextBlock FontSize="14" FontStyle="Italic">
+                                <Run Text="Skrevet d."/>
+                                <Run Text="{Binding Dato1}"/>
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap" FontSize="16" Text="{Binding Tekst}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Border Grid.Column="1" BorderBrush="#ed6b06" BorderThickness="3" Margin="10,0,10,10">
+                <Image Source="{Binding SelectedKategoriliste.Billede}" Stretch="UniformToFill"/>
+            </Border>
+            <Border Grid.Row="1" Margin="0,0,10,0" BorderBrush="#ed6b06" BorderThickness="3" Grid.ColumnSpan="2">
+                <maps:Map x:Name="Map" ZoomLevel="11" Credentials="AhVIFAhaFsdkLTO5W_zBuQRA29ly0ZMwfR1mx_jqnW2QVYH4WQEmtWayB25cA7Aq" Culture="da" Loaded="Map_Loaded" >
+                    <maps:Map.Center>
+                        <maps:Location Latitude="55.641910" Longitude="12.087845" />
+                    </maps:Map.Center>
+
+                    <maps:Pushpin>
+                        <maps:MapLayer.Position>
+                            <maps:Location Latitude="{Binding SelectedKategoriliste.Breddegrad}" Longitude="{Binding SelectedKategoriliste.Laengdegrad}"  />
+                        </maps:MapLayer.Position>
+                    </maps:Pushpin>
+                </maps:Map>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
